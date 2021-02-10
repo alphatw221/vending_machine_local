@@ -23,42 +23,54 @@ class Synchronize(APIView):
         ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
         ser.flush()
         ser.write(b"syn\n")
-        while True:
-            if ser.in_waiting > 0:
-                line = ser.readline().decode('utf-8').rstrip()
-                print(line)
-                break
+        # while True:
+        #     if ser.in_waiting > 0:
+        #         line = ser.readline().decode('utf-8').rstrip()
+        #         print(line)
+        #         break
 
-        JSON=json.loads(line)
+        # JSON=json.loads(line)
 
-        url="http://127.0.0.1:8000/product_list/"
-        token='7b45fd9cbbc8341c8ccec7258d8e42d1311845b0'
-        my_headers={"Authorization":"Token "+token}
-        my_data={}
+        # url="http://127.0.0.1:8000/product_list/"
+        # token='7b45fd9cbbc8341c8ccec7258d8e42d1311845b0'
+        # my_headers={"Authorization":"Token "+token}
+        # my_data={}
         # r=requests.post(url,headers=my_headers,data=my_data)
-        r=requests.get(url)
+        # r=requests.get(url)
         return Response('get')
 
 class SetPrice(APIView):
 
-    def get(self,request):
+    def post(self,request):
         print(request.data)
+        ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
+        ser.flush()
+        ser.write(b"setPrice\n")
         return Response('get')
 
 class SetStock(APIView):
 
-    def get(self,request):
+    def post(self,request):
         print(request.data)
+        ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
+        ser.flush()
+        ser.write(b"setStock\n")
         return Response('get')
 
 class Rest(APIView):
 
     def get(self,request):
         print(request.data)
+        ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
+        ser.flush()
+        ser.write(b"rest\n")
         return Response('get')
 
 class Start(APIView):
 
     def get (self,request):
         print(request.data)
+        ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
+        ser.flush()
+        ser.write(b"start\n")
         return Response('get')
