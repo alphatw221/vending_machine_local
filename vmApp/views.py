@@ -37,28 +37,28 @@ class Synchronize(APIView):
         my_data={}
         # r=requests.post(url,headers=my_headers,data=my_data)
         r=requests.get(url)
-        return 'get'
+        return Response('get')
 
 class SetPrice(APIView):
 
     def get(self,request):
         print(request.data)
-        return 'get'
+        return Response('get')
 
 class SetStock(APIView):
 
     def get(self,request):
         print(request.data)
-        return 'get'
+        return Response('get')
 
 class Rest(APIView):
 
     def get(self,request):
         print(request.data)
-        return 'get'
+        return Response('get')
 
 class Start(APIView):
 
     def get (self,request):
         print(request.data)
-        return 'get'
+        return Response('get')
